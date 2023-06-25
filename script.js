@@ -2,14 +2,61 @@
 const toDoForm = window.document.querySelector('#to-do-form')
 const toDoInput = window.document.querySelector('#to-do-input')
 const toDoEdit = window.document.querySelector('#edit-form')
+const cancelEditBtn = window.document.querySelector('#cancel-edit-btn')
 const toDoToolBar = window.document.querySelector('.tool-bar')
+const toDoSearch = window.document.querySelector('#search-input')
 const toDoList = window.document.querySelector('#to-do-list')
+
+//eventos-----------------------------------------------------
+
+//adicionar tarefa
+toDoForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const inputValue = toDoInput.value
+    if (inputValue) {
+        addToDo(inputValue)
+    } else {
+        alert('Insira uma tarefa')
+    }
+})
+
+//concluir, editar ou remover tarefa
+document.addEventListener('click', (e) => {
+
+    const targetEl = e.target
+    parentEl = targetEl.closest('li')
+
+    //concluir tarefa
+    if (targetEl.classList.contains('finish-to-do')) {
+        parentEl.classList.toggle('done')
+    }
+
+    //editar tarera
+    if (targetEl.classList.contains('edit-to-do')) {
+        toggleForms(true)
+    }
+
+    //excluir tarefa
+    if (targetEl.classList.contains('remove-to-do')) {
+        parentEl.remove()
+    }
+})
+
+//cancelar edição
+cancelEditBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    toggleForms(false)
+})
+
+//pesquisar
+toDoSearch.addEventListener('input', pesquisar)
 
 //funções ----------------------------------------------------
 
 //adiciona tarefa
 const addToDo = (text) => {
-    const toDo = window.document.createElement('div')
+    const toDo = window.document.createElement('li')
     toDo.setAttribute('class', 'to-do')
     
     const toDoTitle = window.document.createElement('h3')
@@ -52,38 +99,17 @@ toggleForms = (cond) => {
 
 }
 
-//eventos-----------------------------------------------------
-
-//adicionar tarefa
-toDoForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-
-    const inputValue = toDoInput.value
-    if (inputValue) {
-        addToDo(inputValue)
+//pesquisar tarefa
+function pesquisar() {
+    if (toDoSearch.value != '') {
+        for (let toDo of toDoList) {
+            let toDoTitle = toDo.querySelector('h3')
+            toDoTitle = toDoTitle.textContent.toLowerCase()
+            console.log(toDoTitle)
+        }
     } else {
-        alert('Insira uma tarefa')
+
     }
-})
+}
 
-//concluir, editar ou remover tarefa
-document.addEventListener('click', (e) => {
 
-    const targetEl = e.target
-    parentEl = targetEl.closest('div')
-
-    //concluir tarefa
-    if (targetEl.classList.contains('finish-to-do')) {
-        parentEl.classList.toggle('done')
-    }
-
-    //editar tarera
-    if (targetEl.classList.contains('edit-to-do')) {
-        toggleForms(true)
-    }
-
-    //excluir tarefa
-    if (targetEl.classList.contains('remove-to-do')) {
-        parentEl.remove()
-    }
-})
