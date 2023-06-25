@@ -18,14 +18,14 @@
             <p>Adicione a sua tarefa:</p>
             <div class="form-control">
                 <input type="text" id="to-do-input" placeholder="O que você vai fazer?">
-                <button>
+                <button id="to-do-add">
                     <i class="fa-thin fa-plus"></i>
                 </button>
             </div>
         </form>
         <!--Area de edicao-->
         <form id="edit-form" class="hide">
-            <p>Edite a sua tarefa</p>
+            <p>Edite sua tarefa</p>
             <div class="form-control">
                 <input type="text" id="edit-input">
                 <button type="submit">
@@ -35,6 +35,7 @@
             <button id="cancel-edit-btn">Cancelar</button>
         </form>
         <!--Area de servico(pesquisa e filtro)-->
+        <div class="tool-bar">
             <div class="search">
                 <h2>Pesquisar</h2>
                 <form>
@@ -55,18 +56,6 @@
         </div>
         <!--Area da lista to do-->
         <div id="to-do-list">
-            <div class="to-do" class="done">
-                <h3>Estou fazendo algo</h3>
-                <button class="finish-to-do">
-                    <i class="fa-solid fa-check"></i>
-                </button>
-                <button class="edit-to-do">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button class="remove-to-do">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
         </div>
     </div>
 
