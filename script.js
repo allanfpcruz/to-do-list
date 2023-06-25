@@ -101,14 +101,21 @@ toggleForms = (cond) => {
 
 //pesquisar tarefa
 function pesquisar() {
+    let list = window.document.querySelectorAll('li')
     if (toDoSearch.value != '') {
-        for (let toDo of toDoList) {
+        let input = toDoSearch.value.toLowerCase()
+        list.forEach((toDo) => {
             let toDoTitle = toDo.querySelector('h3')
-            toDoTitle = toDoTitle.textContent.toLowerCase()
-            console.log(toDoTitle)
-        }
+            if (toDoTitle.textContent.toLowerCase().includes(input)) {
+                toDo.style.display = 'flex'
+            } else {
+                toDo.style.display = 'none'
+            }
+        })
     } else {
-
+        for (let toDo of list) {
+            toDo.style.display = 'flex'
+        }
     }
 }
 
