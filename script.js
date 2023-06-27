@@ -105,8 +105,10 @@ function pesquisar() {
     if (toDoSearch.value != '') {
         let input = toDoSearch.value.toLowerCase()
         list.forEach((toDo) => {
+            let inputLength = input.length 
             let toDoTitle = toDo.querySelector('h3')
-            if (toDoTitle.textContent.toLowerCase().includes(input)) {
+            let titleSlice = toDoTitle.textContent.slice(0, inputLength)
+            if (titleSlice == input) {
                 toDo.style.display = 'flex'
             } else {
                 toDo.style.display = 'none'
