@@ -5,6 +5,7 @@ const toDoEdit = window.document.querySelector('#edit-form')
 const cancelEditBtn = window.document.querySelector('#cancel-edit-btn')
 const toDoToolBar = window.document.querySelector('.tool-bar')
 const toDoSearch = window.document.querySelector('#search-input')
+const filter = window.document.querySelector('#filter-select')
 const toDoList = window.document.querySelector('#to-do-list')
 
 //eventos-----------------------------------------------------
@@ -51,6 +52,11 @@ cancelEditBtn.addEventListener('click', (e) => {
 
 //pesquisar
 toDoSearch.addEventListener('input', pesquisar)
+
+//filtrar
+filter.addEventListener('change', (e) => {
+    filtrar()
+})
 
 //funções ----------------------------------------------------
 
@@ -118,6 +124,34 @@ function pesquisar() {
         for (let toDo of list) {
             toDo.style.display = 'flex'
         }
+    }
+}
+
+//filtrar
+function filtrar() {
+    if (filter.selectedIndex == 0) { 
+        let list = window.document.querySelectorAll('li')
+        list.forEach((toDo) => {
+            toDo.style.display = 'flex'
+        })
+    } else if (filter.selectedIndex == 1) {
+        let list = window.document.querySelectorAll('li')
+        list.forEach((toDo) => {
+            if (toDo.classList.contains('done')) {
+                toDo.style.display = 'flex'
+            } else {
+                toDo.style.display = 'none'
+            }
+        })
+    } else if (filter.selectedIndex == 2) {
+        let list = window.document.querySelectorAll('li')
+        list.forEach((toDo) => {
+            if (!toDo.classList.contains('done')) {
+                toDo.style.display = 'flex'
+            } else {
+                toDo.style.display = 'none'
+            }
+        })
     }
 }
 
