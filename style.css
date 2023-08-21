@@ -1,14 +1,13 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: Helvetica;
+    font-family: Helvetica, sans-serif;
     color: #000000;
     box-sizing: border-box;
 }
 
 body {
-    background-color: #000000; /*mudar o background*/
-    background-position: center;
+    background: black url(imagens/fundo.jpg) no-repeat top center fixed;
     background-size: cover;
 }
 
