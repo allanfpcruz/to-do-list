@@ -7,6 +7,7 @@ const toDoToolBar = window.document.querySelector('.tool-bar')
 const toDoSearch = window.document.querySelector('#search-input')
 const filter = window.document.querySelector('#filter-select')
 const toDoList = window.document.querySelector('#to-do-list')
+const editInput = window.document.querySelector('#edit-input')
 
 //eventos-----------------------------------------------------
 
@@ -56,6 +57,12 @@ toDoSearch.addEventListener('input', pesquisar)
 //filtrar
 filter.addEventListener('change', (e) => {
     filtrar()
+})
+
+//editar
+editInput.addEventListener('input', (e) => {
+    preventDefault()
+    edit()
 })
 
 //funções ----------------------------------------------------
@@ -153,6 +160,11 @@ function filtrar() {
             }
         })
     }
+}
+
+//edita o input
+function edit() {
+    
 }
 
 
