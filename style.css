@@ -136,11 +136,19 @@ input, select {
     padding: 1rem;
     border-bottom: 1px solid lightgray;
     transition: 0.4;
+    transition: all .3s ease;
 }
 
-.to-do h3 {
+.to-do h3,
+.to-do input {
     flex: 1;
     font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.to-do input {
+    border: none;
+    outline: none;
 }
 
 .to-do button {
@@ -155,4 +163,11 @@ input, select {
     color: #ffffff;
     text-decoration: line-through;
     font-style: italic;
+}
+
+.done input {
+    color: #fff;
+    text-decoration: line-through;
+    font-style: italic;
+    background: #0000ff;
 }
